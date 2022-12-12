@@ -1,0 +1,21 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "this is a learning app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lelek337/File-Manager.git"
+  },
+  "author": "Ivan Hubarau <ioan.af@mail.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lelek337/File-Manager/issues"
+  },
+  "homepage": "https://github.com/lelek337/File-Manager#readme"
+}
