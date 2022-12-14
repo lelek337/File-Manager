@@ -1,9 +1,4 @@
 import { sortingComands } from './sorting-comands.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const argsName = () => {
   const argv = process.argv.slice(2);
@@ -20,13 +15,15 @@ const argsName = () => {
   };
 
   console.log(parsed());
-  console.log(`You are currently in`, __dirname)
   
   sortingComands();
 
   process.on('SIGINT', () => {
-    console.log(`Thank you for using File Manager, ${myArgv}, goodbye!`);
+    // console.log(`Thank you for using File Manager, ${myArgv}, goodbye!`);
     process.exit();
+  })
+  process.on('exit', () => {
+    console.log(`Thank you for using File Manager, ${myArgv}, goodbye!`);
   })
 }
 argsName();
