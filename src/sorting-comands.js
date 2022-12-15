@@ -1,6 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { myUp } from './modules/up.js';
+import { myUp, myCd } from './modules/navigation.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,8 +11,12 @@ export const sortingComands = async () => {
       if (data[0]) {
         if (data[0] === 'up') {
           myUp();
+          }else if (data[0].slice(0, 2) === 'cd') {
+            const dataPath = data[0].slice(3);
+            myCd(dataPath);
           }
-      }          
+      }else {
+        console.log('sorry this comand is missing');
+      }         
   }); 
-  // console.log(`You are currently in`, __dirname);
 };
