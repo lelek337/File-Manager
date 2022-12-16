@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { stat } from 'node:fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -30,7 +31,33 @@ export const myCd = (path) => {
     })
     if (!index) {
       console.log(`sorry, this file: "${path}" is not in this section`);
-    }
-    
+    } 
   })
+}
+
+export const myLs = () => {
+  function TableDir(Name, Type) {
+    this.Name = Name;
+    this.Type = Type;
+  };
+  const tableFiler = [];
+  fs.readdir(dirname, (err, files) => {
+    if (err) throw err;
+    files.forEach((file, index) => {
+      let fileType;
+      fs.stat(`${dirname}/${file}`, (err, stats) => {
+        if (err) throw err;
+        if (stats.isFile()) {
+          fileType = file.split('.').pop();
+        }else {
+          fileType = 'directory';
+        }
+        const myFile = new TableDir(file, fileType);
+        tableFiler.push(myFile);        
+        if (index === (files.length - 1)) {
+          console.table(tableFiler);
+        }
+      });
+    })
+  }); 
 }
