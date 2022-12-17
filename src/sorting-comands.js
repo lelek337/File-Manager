@@ -1,9 +1,4 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { myUp, myCd, myLs } from './modules/navigation.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { myUp, myCd, myLs, myCat, myAdd } from './modules/navigation.js';
 
 export const sortingComands = async () => {
   process.stdin.on('data', chunk => {
@@ -14,6 +9,12 @@ export const sortingComands = async () => {
           }else if (data[0].slice(0, 2) === 'cd') {
             const dataPath = data[0].slice(3);
             myCd(dataPath);
+          }else if (data[0].slice(0, 3) === 'cat') {
+            const dataPath = data[0].slice(4);
+            myCat(dataPath);
+          }else if (data[0].slice(0, 3) === 'add') {
+            const dataPath = data[0].slice(4);
+            myAdd(dataPath);
           }else if (data[0] == 'ls') {
             myLs();
           }
