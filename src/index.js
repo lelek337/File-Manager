@@ -2,7 +2,12 @@ import { sortingComands } from './sorting-comands.js';
 
 const argsName = () => {
   const argv = process.argv.slice(2);
-  const myArgv = argv[0].split('=').pop();
+  let myArgv;
+if (typeof argv === 'string') {
+    myArgv = argv[0].split('=').pop();
+  }else {
+    myArgv = 'unknown';
+  }
 
   const parsed = () => {
       try {
@@ -18,12 +23,11 @@ const argsName = () => {
   
   sortingComands();
 
-  process.on('SIGINT', () => {
-    // console.log(`Thank you for using File Manager, ${myArgv}, goodbye!`);
-    process.exit();
-  })
   process.on('exit', () => {
     console.log(`Thank you for using File Manager, ${myArgv}, goodbye!`);
+  })
+  process.on('SIGINT', () => {
+    process.exit();
   })
 }
 argsName();
