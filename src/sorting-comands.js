@@ -5,6 +5,7 @@ import { myCpus } from './modules/my-os/my-cpus.js';
 import { myHomeDir } from './modules/my-os/my-homedir.js';
 import { myUserName } from './modules/my-os/my-username.js';
 import { myArchitecture } from './modules/my-os/my-architecture.js';
+import { myHash } from './modules/my-hash.js';
 
 export const sortingComands = async () => {
   process.stdin.on('data', chunk => {
@@ -32,6 +33,15 @@ export const sortingComands = async () => {
       }else if (data[0].slice(0, 3) === 'cat') {
         const dataPath = data[0].slice(4);
         comand.myCat(dataPath);
+      }else if (data[0].slice(0, 4) === 'hash') {
+        const dataPath = data[0].slice(5);
+        myHash(dataPath);
+      }else if (data[0].slice(0, 8) === 'compress') {
+        const dataPath = data[0].slice(9);
+        comand.myCompress(dataPath);
+      }else if (data[0].slice(0, 10) === 'decompress') {
+        const dataPath = data[0].slice(11);
+        comand.myDeCompress(dataPath);
       }else if (data[0].slice(0, 3) === 'add') {
         const dataPath = data[0].slice(4);
         comand.myAdd(dataPath);

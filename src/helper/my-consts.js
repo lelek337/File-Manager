@@ -1,0 +1,1 @@
+export const notFile = 'File not found';
